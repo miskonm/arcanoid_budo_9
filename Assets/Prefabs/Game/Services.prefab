@@ -88,7 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b9fc62b689461fb0c660c4872e78a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAutoPlay: 0
+  _maxLives: 3
   _score: 0
+  _lives: 0
 --- !u!1 &2131774821161062962
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +136,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5783a65043d74c3aa87fcaec2e1f81e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5820476729622200394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7628021884156581261}
+  - component: {fileID: 8885515990837650372}
+  m_Layer: 0
+  m_Name: PickUpService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7628021884156581261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820476729622200394}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 115061225510867029}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8885515990837650372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820476729622200394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f93848d9a94802b3a7336a40fbe293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickUpSpawnProbability: 50
+  _pickUpPrefab: {fileID: 2289931585792529487, guid: a73544b714d4042d39b05ea29804b508, type: 3}
 --- !u!1 &7657443062064743266
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9192eabbf78947039f43a20ef7dd7a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelSceneNames:
+  - Level1
+  - Level2
+  - Level_Shrrom_Stone_Blocks
 --- !u!1 &7708281713051520077
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,5 +263,6 @@ Transform:
   - {fileID: 1268809420629120389}
   - {fileID: 9079099964555325675}
   - {fileID: 7866733610359683552}
+  - {fileID: 7628021884156581261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
