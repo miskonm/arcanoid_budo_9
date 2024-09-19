@@ -8,7 +8,15 @@ namespace Arkanoid.Services
     {
         #region Variables
 
+        [Header("Auto Play")]
+        [SerializeField] private bool _isAutoPlay;
+
+        [Header("Settings")]
+        [SerializeField] private int _maxLives = 3;
+
+        [Header("Stats")]
         [SerializeField] private int _score;
+        [SerializeField] private int _lives;
 
         #endregion
 
@@ -20,11 +28,19 @@ namespace Arkanoid.Services
 
         #region Properties
 
+        public bool IsAutoPlay => _isAutoPlay;
         public int Score => _score;
 
         #endregion
 
         #region Unity lifecycle
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            _lives = _maxLives;
+        }
 
         private void Start()
         {
@@ -46,13 +62,33 @@ namespace Arkanoid.Services
             OnScoreChanged?.Invoke(_score);
         }
 
+        public void RemoveLife()
+        {
+            if (_lives > 0)
+            {
+                _lives--;
+
+                LevelService.Instance.Ball.ResetBall();
+                return;
+            }
+
+            Debug.LogError($"GAME OVER!");
+        }
+
         #endregion
 
         #region Private methods
 
         private void AllBlocksDestroyedCallback()
         {
-            SceneLoaderService.LoadNextLevelTest();
+            if (SceneLoaderService.Instance.HasNextLevel())
+            {
+                SceneLoaderService.Instance.LoadNextLevel();
+            }
+            else
+            {
+                Debug.LogError($"GAME WIN!");
+            }
         }
 
         #endregion

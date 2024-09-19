@@ -19,8 +19,20 @@ namespace Arkanoid.Game
             {
                 return;
             }
-            
-            SceneLoaderService.Instance.ReloadCurrentScene();
+
+            if (other.gameObject.CompareTag(Tag.Ball))
+            {
+                GameService.Instance.RemoveLife();
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            Destroy(other.gameObject);
         }
 
         #endregion

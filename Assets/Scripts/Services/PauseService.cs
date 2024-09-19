@@ -1,3 +1,4 @@
+using System;
 using Arkanoid.Utility;
 using UnityEngine;
 
@@ -5,9 +6,15 @@ namespace Arkanoid.Services
 {
     public class PauseService : SingletonMonoBehaviour<PauseService>
     {
-        #region Variables
+        #region Events
 
-        private bool _isPaused;
+        public event Action<bool> OnChanged;
+
+        #endregion
+
+        #region Properties
+
+        public bool IsPaused { get; private set; }
 
         #endregion
 
@@ -23,12 +30,13 @@ namespace Arkanoid.Services
 
         #endregion
 
-        #region Private methods
+        #region Public methods
 
-        private void TogglePause()
+        public void TogglePause()
         {
-            _isPaused = !_isPaused;
-            Time.timeScale = _isPaused ? 0 : 1;
+            IsPaused = !IsPaused;
+            Time.timeScale = IsPaused ? 0 : 1;
+            OnChanged?.Invoke(IsPaused);
         }
 
         #endregion

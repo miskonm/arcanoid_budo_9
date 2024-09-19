@@ -1,3 +1,5 @@
+using System;
+using Arkanoid.Services;
 using UnityEngine;
 
 namespace Arkanoid.Game
@@ -9,9 +11,17 @@ namespace Arkanoid.Game
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private Vector2 _startDirection;
         [SerializeField] private float _speed = 10;
+        [SerializeField] private float _yOffsetFromPlatform = 1;
 
         private bool _isStarted;
         private Platform _platform;
+
+        #endregion
+
+        #region Events
+
+        public static event Action<Ball> OnCreated;
+        public static event Action<Ball> OnDestroyed;
 
         #endregion
 
@@ -20,13 +30,19 @@ namespace Arkanoid.Game
         private void Start()
         {
             _platform = FindObjectOfType<Platform>();
+
+            OnCreated?.Invoke(this);
+
+            if (GameService.Instance.IsAutoPlay)
+            {
+                StartFlying();
+            }
         }
 
         private void Update()
         {
             if (_isStarted)
             {
-                Debug.Log($"Velocity Magnitude: '{_rb.velocity.magnitude}'");
                 return;
             }
 
@@ -36,6 +52,11 @@ namespace Arkanoid.Game
             {
                 StartFlying();
             }
+        }
+
+        private void OnDestroy()
+        {
+            OnDestroyed?.Invoke(this);
         }
 
         private void OnDrawGizmos()
@@ -55,12 +76,23 @@ namespace Arkanoid.Game
 
         #endregion
 
+        #region Public methods
+
+        public void ResetBall()
+        {
+            _isStarted = false;
+            _rb.velocity = Vector2.zero;
+        }
+
+        #endregion
+
         #region Private methods
-        
+
         private void MoveWithPlatform()
         {
             Vector3 currentPosition = transform.position;
             currentPosition.x = _platform.transform.position.x;
+            currentPosition.y = _platform.transform.position.y + _yOffsetFromPlatform;
             transform.position = currentPosition;
         }
 

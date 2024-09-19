@@ -28,12 +28,22 @@ namespace Arkanoid.Game
 
         private void OnDestroy()
         {
-            GameService.Instance.AddScore(_score);
             OnDestroyed?.Invoke(this);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            DestroyBlock();
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void DestroyBlock()
+        {
+            GameService.Instance.AddScore(_score);
+            PickUpService.Instance.SpawnPickUp(transform.position);
             Destroy(gameObject);
         }
 
