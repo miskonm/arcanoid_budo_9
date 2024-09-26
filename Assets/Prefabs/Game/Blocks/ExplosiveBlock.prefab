@@ -97,6 +97,8 @@ MonoBehaviour:
   _explosiveLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  _explosionVfxPrefab: {fileID: 973560375075556146, guid: 45dbf7a3d7e6f409b9861e25e6d019b9, type: 3}
+  _explosionAudioClip: {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}
 --- !u!1 &8587144196305522472
 GameObject:
   m_ObjectHideFlags: 0

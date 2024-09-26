@@ -136,6 +136,7 @@ MonoBehaviour:
   _startDirection: {x: 4.04, y: 5.49}
   _speed: 10
   _yOffsetFromPlatform: 1.22
+  _hitAudioClip: {fileID: 8300000, guid: 724131bc8a7f34041bb9f1701f0cb58d, type: 3}
 --- !u!58 &8390826723768986935
 CircleCollider2D:
   m_ObjectHideFlags: 0
