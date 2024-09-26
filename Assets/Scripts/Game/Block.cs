@@ -10,6 +10,11 @@ namespace Arkanoid.Game
 
         [SerializeField] private int _score = 1;
 
+        [Header("Explosive")]
+        [SerializeField] private bool _isExplosive;
+        [SerializeField] private float _explosiveRadius = 1f;
+        [SerializeField] private LayerMask _explosiveLayerMask;
+
         #endregion
 
         #region Events
@@ -36,6 +41,24 @@ namespace Arkanoid.Game
             DestroyBlock();
         }
 
+        private void OnDrawGizmos()
+        {
+            if (_isExplosive)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(transform.position, _explosiveRadius);
+            }
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void ForceDestroy()
+        {
+            DestroyBlock();
+        }
+
         #endregion
 
         #region Private methods
@@ -45,6 +68,25 @@ namespace Arkanoid.Game
             GameService.Instance.AddScore(_score);
             PickUpService.Instance.SpawnPickUp(transform.position);
             Destroy(gameObject);
+            Explode();
+        }
+
+        private void Explode()
+        {
+            if (!_isExplosive)
+            {
+                return;
+            }
+
+            Collider2D[] colliders =
+                Physics2D.OverlapCircleAll(transform.position, _explosiveRadius, _explosiveLayerMask);
+            foreach (Collider2D col in colliders)
+            {
+                if (col.gameObject.TryGetComponent(out Block block))
+                {
+                    block.ForceDestroy();
+                }
+            }
         }
 
         #endregion
