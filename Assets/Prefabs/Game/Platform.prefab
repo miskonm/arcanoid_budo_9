@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4708621491043701315}
   - component: {fileID: 6273801917041973066}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: elementStone016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7867691344861879897}
   - component: {fileID: 4154491710372673047}
   - component: {fileID: 7715341250243523664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}

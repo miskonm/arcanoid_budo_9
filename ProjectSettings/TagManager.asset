@@ -13,11 +13,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ball
+  - Platform
+  - Block
+  - PickUp
+  - Walls
   - 
   - 
   - 

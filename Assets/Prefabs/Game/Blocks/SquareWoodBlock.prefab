@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7140686302907690109}
   - component: {fileID: 1236350064143833085}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: elementWood010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8586388284727954837}
   - component: {fileID: 2701399738804982938}
   - component: {fileID: 4864166392302400975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SquareWoodBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,5 +176,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 1
-  _pickUpPrefab: {fileID: 2289931585792529487, guid: a73544b714d4042d39b05ea29804b508, type: 3}
-  _pickUpSpawnProbability: 50

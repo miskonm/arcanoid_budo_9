@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2234685411410866310}
   - component: {fileID: 601317501245743339}
   - component: {fileID: 6659573001070818583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigWoodBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0add72b39c424e81c4fd7c177952c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: 1
 --- !u!1 &9133843748684699055
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4529492696164344963}
   - component: {fileID: 3375899927703459840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: elementWood017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
