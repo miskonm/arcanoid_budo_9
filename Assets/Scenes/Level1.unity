@@ -1097,6 +1097,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 105122967711037912}
+  - {fileID: 5772334988178034291}
   - {fileID: 1341911330}
   - {fileID: 184151168}
   - {fileID: 1096978273}
@@ -2913,6 +2914,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf6c8d31fbfcc438ca6bcd2f550b546f, type: 3}
+--- !u!4 &5772334988178034291 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+  m_PrefabInstance: {fileID: 7525409829951469873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6331982571363892130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2927,7 +2933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1919214347250323330, guid: 977544c402a514de38836d7f3a8f788a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7890654669287591012, guid: 977544c402a514de38836d7f3a8f788a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3206,6 +3212,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d67a6cb37086434db9af782cb4b8aca, type: 3}
+--- !u!1001 &7525409829951469873
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 997149316}
+    m_Modifications:
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691026247920078916, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 887684883936443404, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: _explosionAudioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476446828908984885, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
+      propertyPath: m_Name
+      value: ExplosiveBlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37841fd17cbf04a2fa9b126c843767b1, type: 3}
 --- !u!4 &8314495506669660075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2234685411410866310, guid: 2f35eac8211b240e8824efd995293376, type: 3}

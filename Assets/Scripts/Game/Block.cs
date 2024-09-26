@@ -14,6 +14,8 @@ namespace Arkanoid.Game
         [SerializeField] private bool _isExplosive;
         [SerializeField] private float _explosiveRadius = 1f;
         [SerializeField] private LayerMask _explosiveLayerMask;
+        [SerializeField] private GameObject _explosionVfxPrefab;
+        [SerializeField] private AudioClip _explosionAudioClip;
 
         #endregion
 
@@ -76,6 +78,13 @@ namespace Arkanoid.Game
             if (!_isExplosive)
             {
                 return;
+            }
+
+            AudioService.Instance.PlaySfx(_explosionAudioClip);
+
+            if (_explosionVfxPrefab != null)
+            {
+                Instantiate(_explosionVfxPrefab, transform.position, Quaternion.identity);
             }
 
             Collider2D[] colliders =
