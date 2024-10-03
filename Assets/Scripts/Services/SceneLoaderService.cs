@@ -1,3 +1,4 @@
+using System.Collections;
 using Arkanoid.Utility;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ namespace Arkanoid.Services
         [SerializeField] private string[] _levelSceneNames;
 
         private int _currentSceneIndex;
+        private bool _isLoadingNextScene;
 
         #endregion
 
@@ -34,18 +36,51 @@ namespace Arkanoid.Services
 
         public void LoadFirstLevel()
         {
+            if (_isLoadingNextScene)
+            {
+                Debug.LogError($"[{nameof(SceneLoaderService)} : {nameof(LoadFirstLevel)}] Try load scene " +
+                               $"when '{nameof(_isLoadingNextScene)}' is true");
+                return;
+            }
+
             _currentSceneIndex = 0;
             LoadCurrentScene();
         }
 
         public void LoadNextLevel()
         {
+            if (_isLoadingNextScene)
+            {
+                Debug.LogError($"[{nameof(SceneLoaderService)} : {nameof(LoadNextLevel)}] Try load scene " +
+                               $"when '{nameof(_isLoadingNextScene)}' is true");
+                return;
+            }
+
             _currentSceneIndex++;
             LoadCurrentScene();
         }
 
+        public void LoadNextLevelWithDelay(float delay)
+        {
+            if (_isLoadingNextScene)
+            {
+                Debug.LogError($"[{nameof(SceneLoaderService)} : {nameof(LoadNextLevelWithDelay)}] Try load scene " +
+                               $"when '{nameof(_isLoadingNextScene)}' is true");
+                return;
+            }
+
+            StartCoroutine(LoadNextLevelWithDelayInternal(delay));
+        }
+
         public void ReloadCurrentScene()
         {
+            if (_isLoadingNextScene)
+            {
+                Debug.LogError($"[{nameof(SceneLoaderService)} : {nameof(ReloadCurrentScene)}] Try load scene " +
+                               $"when '{nameof(_isLoadingNextScene)}' is true");
+                return;
+            }
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -71,6 +106,15 @@ namespace Arkanoid.Services
         private void LoadCurrentScene()
         {
             SceneManager.LoadScene(_levelSceneNames[_currentSceneIndex]);
+        }
+
+        private IEnumerator LoadNextLevelWithDelayInternal(float delay)
+        {
+            _isLoadingNextScene = true;
+            yield return new WaitForSeconds(delay);
+            _isLoadingNextScene = false;
+
+            LoadNextLevel();
         }
 
         #endregion

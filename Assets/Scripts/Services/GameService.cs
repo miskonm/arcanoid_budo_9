@@ -83,7 +83,7 @@ namespace Arkanoid.Services
         {
             if (SceneLoaderService.Instance.HasNextLevel())
             {
-                SceneLoaderService.Instance.LoadNextLevel();
+                SceneLoaderService.Instance.LoadNextLevelWithDelay(2);
             }
             else
             {

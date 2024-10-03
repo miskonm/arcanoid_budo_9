@@ -1,6 +1,8 @@
 using System;
 using Arkanoid.Services;
+using Arkanoid.Utils;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Arkanoid.Game
 {
@@ -9,9 +11,13 @@ namespace Arkanoid.Game
         #region Variables
 
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private Vector2 _startDirection;
         [SerializeField] private float _speed = 10;
         [SerializeField] private float _yOffsetFromPlatform = 1;
+
+        [Header("Direction")]
+        [SerializeField] private float _directionMin = -90;
+        [SerializeField] private float _directionMax = 90;
+        [SerializeField] private int _segments = 10;
 
         [Header("Audio")]
         [SerializeField] private AudioClip _hitAudioClip;
@@ -62,24 +68,23 @@ namespace Arkanoid.Game
             OnDestroyed?.Invoke(this);
         }
 
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            AudioService.Instance.PlaySfx(_hitAudioClip);
+        }
+
         private void OnDrawGizmos()
         {
             if (!_isStarted)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawLine(transform.position, transform.position + (Vector3)_startDirection);
-                // Debug.Log($"Magnitude: '{_startDirection.magnitude}'");
+                GizmosUtils.DrawArc2D(transform.position, Vector2.up, _directionMin, _directionMax, _speed, _segments);
             }
             else
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(transform.position, transform.position + (Vector3)_rb.velocity);
             }
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            AudioService.Instance.PlaySfx(_hitAudioClip);
         }
 
         #endregion
@@ -96,6 +101,14 @@ namespace Arkanoid.Game
 
         #region Private methods
 
+        private Vector3 GerRandomDirection()
+        {
+            float minAngleRad = _directionMin * Mathf.Deg2Rad;
+            float maxAngleRad = _directionMax * Mathf.Deg2Rad;
+            float randomAngle = Random.Range(minAngleRad, maxAngleRad);
+            return new Vector2(Mathf.Sin(randomAngle), Mathf.Cos(randomAngle)).normalized;
+        }
+
         private void MoveWithPlatform()
         {
             Vector3 currentPosition = transform.position;
@@ -107,7 +120,7 @@ namespace Arkanoid.Game
         private void StartFlying()
         {
             _isStarted = true;
-            _rb.velocity = _startDirection.normalized * _speed;
+            _rb.velocity = GerRandomDirection() * _speed;
         }
 
         #endregion
